@@ -1,0 +1,889 @@
+/* Estilos específicos para el Panel Ciclo Básico */
+
+.ciclo-basico-container {
+    display: grid;
+    gap: 2rem;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Estadísticas Generales */
+.estadisticas-cb {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.estadisticas-cb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
+}
+
+.estadisticas-cb h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--white), #f8fafc);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    transition: transform 0.3s ease;
+    transform: scaleY(0);
+}
+
+.stat-card:hover::before {
+    transform: scaleY(1);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-alumnos::before { background: #10b981; }
+.stat-materias::before { background: #3b82f6; }
+.stat-profesores::before { background: #f59e0b; }
+.stat-años::before { background: #8b5cf6; }
+
+.stat-icon {
+    font-size: 2.5rem;
+    opacity: 0.8;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+    transform: scale(1.1);
+}
+
+.stat-info h3 {
+    font-size: 2rem;
+    color: var(--gray-800);
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+.stat-info p {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Tabs del Panel */
+.tabs-cb {
+    display: flex;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+.tabs-cb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899, #f59e0b);
+}
+
+.tab-button {
+    flex: 1;
+    padding: 1.25rem;
+    background: var(--gray-100);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    color: var(--gray-600);
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #4f46e5;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: var(--white);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button.active::before {
+    transform: scaleX(1);
+}
+
+.tab-button:hover:not(.active) {
+    background: var(--gray-200);
+    color: var(--gray-800);
+    transform: translateY(-1px);
+}
+
+/* Contenido de tabs */
+.tab-content {
+    display: none;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+    padding-bottom: 0.5rem;
+}
+
+/* Secciones de Año */
+.año-section, .año-alumnos-section, .horario-año-section {
+    margin-bottom: 2rem;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--white);
+}
+
+.año-header {
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.año-header h3 {
+    color: var(--gray-800);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.badge-año {
+    background: #4f46e5;
+    color: var(--white);
+    padding: 0.375rem 0.875rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+/* Grid de Materias */
+.materias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.materia-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.materia-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.materia-card:hover::before {
+    transform: scaleX(1);
+}
+
+.materia-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #4f46e5;
+}
+
+.materia-nombre {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.materia-nombre::before {
+    content: '📖';
+    font-size: 1rem;
+}
+
+.profesor-info {
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.profesor-info strong {
+    color: var(--gray-800);
+}
+
+.sin-asignar {
+    color: var(--warning-color);
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Horarios dentro de materia */
+.horarios-materia {
+    background: var(--gray-50);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+}
+
+.horarios-materia strong {
+    color: var(--gray-800);
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.horario-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 0.875rem;
+}
+
+.horario-item:last-child {
+    border-bottom: none;
+}
+
+.horario-dia {
+    font-weight: 500;
+    color: #4f46e5;
+    text-transform: capitalize;
+    min-width: 80px;
+}
+
+.horario-tiempo {
+    color: var(--gray-600);
+    font-family: monospace;
+    flex: 1;
+    text-align: center;
+}
+
+.horario-aula {
+    background: #4f46e5;
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.sin-horarios, .sin-materias, .sin-alumnos, .sin-horarios-año {
+    text-align: center;
+    padding: 2rem;
+    color: var(--gray-500);
+    font-style: italic;
+    background: var(--gray-50);
+    border-radius: var(--border-radius);
+    margin: 1rem;
+}
+
+/* Grid de Alumnos */
+.alumnos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.alumno-card {
+    background: var(--white);
+    padding: 1.25rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.alumno-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #10b981, #059669);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.alumno-card:hover::before {
+    transform: scaleX(1);
+}
+
+.alumno-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    border-color: #10b981;
+}
+
+.alumno-nombre {
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.alumno-usuario {
+    background: #10b981;
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.alumno-dni, .alumno-telefono {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Horarios Semanales */
+.horario-semanal {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.horario-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    min-height: 400px;
+}
+
+.dia-column {
+    border-right: 1px solid var(--gray-200);
+    padding: 1rem;
+    background: var(--white);
+}
+
+.dia-column:last-child {
+    border-right: none;
+}
+
+.dia-header {
+    font-weight: 600;
+    text-align: center;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    color: var(--gray-800);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.clase-item {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: var(--white);
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.clase-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.clase-item:hover::before {
+    left: 100%;
+}
+
+.clase-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+
+.clase-hora {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-size: 0.75rem;
+    font-family: monospace;
+}
+
+.clase-materia {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+}
+
+.clase-aula, .clase-profesor {
+    opacity: 0.9;
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 0.125rem;
+}
+
+.sin-clases {
+    text-align: center;
+    color: var(--gray-500);
+    font-style: italic;
+    padding: 2rem 0;
+    font-size: 0.875rem;
+}
+
+/* Noticias del Ciclo Básico */
+.noticias-cb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.noticia-cb-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.noticia-cb-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ec4899, #f59e0b);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.noticia-cb-card:hover::before {
+    transform: scaleX(1);
+}
+
+.noticia-cb-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #ec4899;
+}
+
+.noticia-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.noticia-header h4 {
+    color: var(--gray-800);
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.noticia-dirigido {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.badge-todos {
+    background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+    color: #7c3aed;
+}
+
+.badge-ciclo_basico {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    color: #92400e;
+}
+
+.noticia-contenido {
+    color: var(--gray-700);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.noticia-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    border-top: 1px solid var(--gray-200);
+    padding-top: 1rem;
+}
+
+.noticia-autor, .noticia-fecha {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.sin-noticias-cb {
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray-600);
+    background: var(--gray-50);
+    border-radius: var(--border-radius);
+    border: 2px dashed var(--gray-300);
+}
+
+.sin-noticias-cb h3 {
+    color: var(--gray-700);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* Acciones Rápidas */
+.acciones-rapidas {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.acciones-rapidas h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.acciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.accion-card {
+    background: linear-gradient(135deg, var(--white), #f8fafc);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--gray-800);
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.accion-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #4f46e5;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.accion-card:hover::before {
+    transform: scaleY(1);
+}
+
+.accion-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    color: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.accion-icon {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    padding: 0.75rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.accion-card:hover .accion-icon {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.accion-texto h4 {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.accion-texto p {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.accion-card:hover .accion-texto p {
+    color: var(--gray-700);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .horario-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tabs-cb {
+        flex-direction: column;
+    }
+    
+    .tab-button {
+        border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .tab-button:last-child {
+        border-bottom: none;
+    }
+    
+    .horario-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .dia-column {
+        border-right: none;
+        border-bottom: 1px solid var(--gray-200);
+        padding: 1rem;
+    }
+    
+    .dia-column:last-child {
+        border-bottom: none;
+    }
+    
+    .materias-grid, .alumnos-grid, .acciones-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .año-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .noticia-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-content {
+        padding: 1.5rem;
+    }
+    
+    .estadisticas-cb {
+        padding: 1.5rem;
+    }
+    
+    .materia-card, .alumno-card, .noticia-cb-card {
+        padding: 1rem;
+    }
+    
+    .clase-item {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .accion-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .accion-icon {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ciclo-basico-container > * {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.ciclo-basico-container > *:nth-child(2) { animation-delay: 0.1s; }
+.ciclo-basico-container > *:nth-child(3) { animation-delay: 0.2s; }
+.ciclo-basico-container > *:nth-child(4) { animation-delay: 0.3s; }
+.ciclo-basico-container > *:nth-child(5) { animation-delay: 0.4s; }
+
+.materia-card, .alumno-card, .accion-card {
+    animation: slideInLeft 0.4s ease-out;
+}
+
+.materia-card:nth-child(1) { animation-delay: 0.1s; }
+.materia-card:nth-child(2) { animation-delay: 0.2s; }
+.materia-card:nth-child(3) { animation-delay: 0.3s; }
+.materia-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Estados de carga */
+.ciclo-basico-container.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.materia-card.loading, .alumno-card.loading {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Efectos especiales */
+.stat-card:active {
+    transform: scale(0.98);
+}
+
+.clase-item:active {
+    transform: scale(0.98);
+}
+
+.tab-button:active {
+    transform: scale(0.98);
+}

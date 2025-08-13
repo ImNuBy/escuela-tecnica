@@ -1,0 +1,554 @@
+/* Estilos específicos para las páginas de alumnos */
+
+/* Información del alumno */
+.alumno-info {
+    background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+    color: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.alumno-info::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: float 20s ease-in-out infinite;
+}
+
+.alumno-info h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.curso-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: var(--white);
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 1rem;
+    background: var(--gray-100);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+    color: var(--gray-600);
+}
+
+.tab-button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.tab-button.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.tab-button.active::before {
+    transform: scaleX(1);
+}
+
+.tab-button:hover:not(.active) {
+    background: var(--gray-200);
+    color: var(--gray-800);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Grid de materias */
+.materias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.materia-card {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.materia-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #3b82f6);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.materia-card:hover::before {
+    transform: scaleX(1);
+}
+
+.materia-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.materia-nombre {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.materia-nombre::before {
+    content: '📚';
+    font-size: 1rem;
+}
+
+.profesor-info {
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.profesor-info::before {
+    content: '👨‍🏫';
+    font-size: 0.875rem;
+}
+
+/* Horarios dentro de materia */
+.horarios-materia {
+    background: var(--gray-50);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin: 1rem 0;
+}
+
+.horarios-materia h4 {
+    color: var(--gray-800);
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.horarios-materia h4::before {
+    content: '🕒';
+    font-size: 0.875rem;
+}
+
+.horario-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 0.875rem;
+}
+
+.horario-item:last-child {
+    border-bottom: none;
+}
+
+.horario-dia {
+    font-weight: 500;
+    color: var(--primary-color);
+    text-transform: capitalize;
+}
+
+.horario-tiempo {
+    color: var(--gray-600);
+}
+
+.horario-aula {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Horario semanal */
+.horario-semanal {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.horario-header {
+    background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.horario-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.horario-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.horario-header p {
+    font-size: 1rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+.horario-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    min-height: 500px;
+}
+
+.dia-column {
+    border-right: 1px solid var(--gray-200);
+    padding: 1rem;
+    background: var(--white);
+}
+
+.dia-column:last-child {
+    border-right: none;
+}
+
+.dia-header {
+    font-weight: 600;
+    text-align: center;
+    padding: 0.75rem;
+    background: var(--gray-100);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    color: var(--gray-800);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.clase-item {
+    background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+    color: var(--white);
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.clase-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.clase-item:hover::before {
+    left: 100%;
+}
+
+.clase-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+.clase-hora {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-size: 0.75rem;
+}
+
+.clase-materia {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.clase-aula {
+    opacity: 0.9;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Información adicional del horario */
+.info-horario {
+    margin-top: 2rem;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.info-horario h3 {
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-horario h3::before {
+    content: 'ℹ️';
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.info-item {
+    background: var(--gray-50);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--primary-color);
+}
+
+.info-item strong {
+    color: var(--gray-800);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+/* Botones de acción */
+.acciones-horario {
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Sin contenido */
+.sin-contenido {
+    text-align: center;
+    padding: 3rem;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    color: var(--gray-600);
+}
+
+.sin-contenido h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--gray-700);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .horario-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .dia-column:nth-child(n+4) {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .horario-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .dia-column {
+        border-right: none;
+        border-bottom: 1px solid var(--gray-200);
+        padding: 1rem;
+    }
+    
+    .dia-column:last-child {
+        border-bottom: none;
+    }
+    
+    .materias-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tabs {
+        flex-direction: column;
+    }
+    
+    .tab-button {
+        border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .tab-button:last-child {
+        border-bottom: none;
+    }
+    
+    .alumno-info {
+        padding: 1.5rem;
+    }
+    
+    .alumno-info h2 {
+        font-size: 1.5rem;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .acciones-horario {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .materia-card {
+        padding: 1rem;
+    }
+    
+    .horario-header {
+        padding: 1.5rem;
+    }
+    
+    .clase-item {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .curso-badge {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.materia-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.materia-card:nth-child(1) { animation-delay: 0.1s; }
+.materia-card:nth-child(2) { animation-delay: 0.2s; }
+.materia-card:nth-child(3) { animation-delay: 0.3s; }
+.materia-card:nth-child(4) { animation-delay: 0.4s; }
+
+.clase-item {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* Estados de carga */
+.materia-card.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.horario-semanal.loading {
+    opacity: 0.7;
+}
+
+.horario-semanal.loading .clase-item {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}

@@ -1,0 +1,426 @@
+/* Estilos específicos para la gestión académica */
+
+.academico-container {
+    display: grid;
+    gap: 2rem;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Sistema de tabs */
+.tabs {
+    display: flex;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+.tabs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), #3b82f6, var(--success-color));
+}
+
+.tab-button {
+    flex: 1;
+    padding: 1.25rem;
+    background: var(--gray-100);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    color: var(--gray-600);
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.tab-button.active {
+    background: var(--primary-color);
+    color: var(--white);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button.active::before {
+    transform: scaleX(1);
+}
+
+.tab-button:hover:not(.active) {
+    background: var(--gray-200);
+    color: var(--gray-800);
+    transform: translateY(-1px);
+}
+
+/* Contenido de tabs */
+.tab-content {
+    display: none;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+    padding-bottom: 0.5rem;
+}
+
+.tab-content h2::before {
+    content: '📚';
+    font-size: 1.25rem;
+}
+
+/* Formularios */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.875rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Vista de horarios semanales */
+.horarios-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.dia-column {
+    background: var(--gray-50);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.dia-column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), #3b82f6);
+}
+
+.dia-header {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.horario-item {
+    background: var(--white);
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--primary-color);
+    font-size: 0.875rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.horario-item:hover {
+    transform: translateX(3px);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+    border-left-color: #1d4ed8;
+}
+
+.horario-time {
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.horario-time::before {
+    content: '🕒';
+    font-size: 0.75rem;
+}
+
+.horario-materia {
+    color: var(--gray-600);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.horario-aula {
+    color: var(--gray-500);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.horario-aula::before {
+    content: '📍';
+    font-size: 0.75rem;
+}
+
+/* Listas de materias y horarios */
+.lista-section {
+    margin-top: 2rem;
+}
+
+.lista-section h3 {
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lista-section h3::before {
+    content: '📋';
+}
+
+.table-responsive {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: var(--gray-100);
+    font-weight: 600;
+    color: var(--gray-800);
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--gray-200);
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    color: var(--gray-700);
+    font-size: 0.9rem;
+}
+
+tr {
+    transition: background-color 0.2s ease;
+}
+
+tr:hover {
+    background: var(--gray-50);
+}
+
+/* Estados sin contenido */
+.sin-contenido {
+    text-align: center;
+    padding: 3rem;
+    background: var(--gray-50);
+    border-radius: var(--border-radius);
+    border: 2px dashed var(--gray-300);
+    color: var(--gray-600);
+}
+
+.sin-contenido h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--gray-700);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .horarios-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+    }
+    
+    .tab-button {
+        border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .tab-button:last-child {
+        border-bottom: none;
+    }
+    
+    .horarios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tab-content {
+        padding: 1.5rem;
+    }
+    
+    .dia-column {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-content {
+        padding: 1rem;
+    }
+    
+    .horario-item {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .dia-header {
+        font-size: 0.9rem;
+        padding: 0.375rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.academico-container > * {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.academico-container > *:nth-child(2) { animation-delay: 0.1s; }
+.academico-container > *:nth-child(3) { animation-delay: 0.2s; }
+
+.horario-item {
+    animation: slideInLeft 0.4s ease-out;
+}
+
+.horario-item:nth-child(1) { animation-delay: 0.1s; }
+.horario-item:nth-child(2) { animation-delay: 0.2s; }
+.horario-item:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Loading states */
+.tab-content.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.horarios-grid.loading .horario-item {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Efectos especiales */
+.tab-button:active {
+    transform: scale(0.98);
+}
+
+.form-group input:valid,
+.form-group select:valid {
+    border-color: var(--success-color);
+}
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group select:invalid:not(:placeholder-shown) {
+    border-color: var(--danger-color);
+}
