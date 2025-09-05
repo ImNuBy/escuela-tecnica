@@ -1,55 +1,17 @@
-/* ESTILOS PARA LA SECCIÓN DE PROFESORES */
+/* Estilos específicos para Mis Materias del Profesor */
 
-/* Layout principal */
-.main-container {
-    display: flex;
-    min-height: 100vh;
-}
-
-.content {
-    flex: 1;
-    padding: 2rem;
-    background: #f8fafc;
-}
-
-/* Page header */
-.page-header {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
-    border-left: 4px solid #2563eb;
-}
-
-.page-header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.page-header p {
-    color: #6b7280;
-    font-size: 1rem;
-}
-
-/* Container principal */
 .profesor-container {
     display: grid;
     gap: 2rem;
     animation: fadeInUp 0.6s ease-out;
 }
 
-/* Estadísticas del profesor */
+/* Estadísticas del Profesor */
 .estadisticas-profesor {
-    background: white;
+    background: var(--white);
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
 }
@@ -61,11 +23,11 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    background: linear-gradient(90deg, #2563eb, #3b82f6, #1d4ed8);
 }
 
 .estadisticas-profesor h2 {
-    color: #1f2937;
+    color: var(--gray-800);
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     font-weight: 600;
@@ -74,31 +36,31 @@
     gap: 0.5rem;
 }
 
-/* Grid de estadísticas */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
 .stat-card {
     background: linear-gradient(135deg, #2563eb, #3b82f6);
-    color: white;
+    color: var(--white);
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    border: 1px solid transparent;
 }
 
 .stat-card::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
     transform: scale(0);
     transition: transform 0.3s ease;
@@ -110,41 +72,52 @@
 
 .stat-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
 }
 
 .stat-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
     display: block;
     position: relative;
     z-index: 1;
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+    transform: scale(1.1);
 }
 
 .stat-number {
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 700;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
     position: relative;
     z-index: 1;
+    display: block;
 }
 
 .stat-label {
-    font-size: 0.875rem;
-    opacity: 0.9;
+    font-size: 0.9rem;
+    opacity: 0.95;
     position: relative;
     z-index: 1;
+    font-weight: 500;
 }
 
 /* Secciones con títulos */
 .seccion-titulo {
-    color: #1f2937;
+    color: var(--gray-800);
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+    padding-bottom: 0.5rem;
 }
 
 /* Grid de materias del profesor */
@@ -155,12 +128,12 @@
 }
 
 .materia-card {
-    background: white;
+    background: var(--white);
     padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    border-left: 4px solid #2563eb;
+    border: 1px solid var(--gray-200);
     position: relative;
     overflow: hidden;
 }
@@ -170,38 +143,48 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
-    height: 100%;
-    background: #2563eb;
-    transform: scaleY(0);
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    transform: scaleX(0);
     transition: transform 0.3s ease;
 }
 
 .materia-card:hover::before {
-    transform: scaleY(1);
+    transform: scaleX(1);
 }
 
 .materia-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #2563eb;
 }
 
 .materia-nombre {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
+    color: var(--gray-800);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.materia-nombre::before {
+    content: '📖';
+    font-size: 1rem;
 }
 
 .materia-curso {
-    background: #f3f4f6;
-    color: #374151;
-    padding: 0.25rem 0.75rem;
-    border-radius: 15px;
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    color: var(--gray-700);
+    padding: 0.375rem 0.875rem;
+    border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 500;
     display: inline-block;
     margin-bottom: 1rem;
+    border: 1px solid var(--gray-300);
 }
 
 .materia-stats {
@@ -209,31 +192,43 @@
     justify-content: space-between;
     margin-bottom: 1rem;
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--gray-600);
+    gap: 1rem;
+}
+
+.materia-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 500;
 }
 
 /* Horarios dentro de materias */
 .horarios-materia {
-    background: #f9fafb;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     margin-bottom: 1rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--gray-200);
 }
 
 .horarios-materia h4 {
-    color: #1f2937;
+    color: var(--gray-800);
     margin-bottom: 0.75rem;
     font-size: 0.95rem;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
 .horario-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 0.875rem;
 }
 
 .horario-item:last-child {
@@ -241,21 +236,43 @@
 }
 
 .horario-dia {
-    font-weight: 500;
+    font-weight: 600;
     color: #2563eb;
+    text-transform: capitalize;
+    min-width: 80px;
 }
 
 .horario-tiempo {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--gray-600);
+    font-family: monospace;
+    flex: 1;
+    text-align: center;
+    background: var(--white);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin: 0 0.5rem;
 }
 
 .horario-aula {
-    background: #2563eb;
-    color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
     font-size: 0.75rem;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+}
+
+.div-sin-horarios {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    color: #92400e;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-style: italic;
+    border: 1px solid #f59e0b;
+    font-weight: 500;
 }
 
 /* Acciones de materia */
@@ -263,6 +280,9 @@
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-200);
 }
 
 .btn-small {
@@ -271,202 +291,205 @@
     border-radius: 6px;
     text-decoration: none;
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-small::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-small:hover::before {
+    left: 100%;
 }
 
 .btn-primary-small {
-    background: #2563eb;
-    color: white;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: var(--white);
+    border: 1px solid #2563eb;
 }
 
 .btn-primary-small:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
 }
 
 .btn-secondary-small {
-    background: #f3f4f6;
-    color: #374151;
-    border: 1px solid #d1d5db;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    color: var(--gray-700);
+    border: 1px solid var(--gray-300);
 }
 
 .btn-secondary-small:hover {
-    background: #e5e7eb;
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: var(--gray-800);
 }
 
 /* Estado sin materias */
 .sin-materias {
     text-align: center;
     padding: 3rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    border: 2px dashed #d1d5db;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px dashed var(--gray-300);
+    color: var(--gray-600);
 }
 
 .sin-materias h3 {
-    color: #374151;
+    color: var(--gray-700);
     margin-bottom: 1rem;
     font-size: 1.25rem;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.sin-materias h3::before {
+    content: '📚';
+    font-size: 1.5rem;
 }
 
 .sin-materias p {
-    color: #6b7280;
+    color: var(--gray-600);
     line-height: 1.6;
     margin-bottom: 0.5rem;
 }
 
 /* Noticias para profesores */
 .noticias-profesor {
-    background: white;
+    background: var(--white);
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--gray-200);
 }
 
 .noticias-profesor h2 {
-    color: #1f2937;
+    color: var(--gray-800);
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+    padding-bottom: 0.5rem;
 }
 
 .noticia-card {
-    background: #f9fafb;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     margin-bottom: 1rem;
-    border-left: 3px solid #2563eb;
+    border: 1px solid var(--gray-200);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.noticia-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.noticia-card:hover::before {
+    transform: scaleY(1);
 }
 
 .noticia-card:hover {
-    transform: translateX(5px);
+    transform: translateX(8px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-color: #2563eb;
 }
 
 .noticia-titulo {
     font-weight: 600;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
+    color: var(--gray-800);
+    margin-bottom: 0.75rem;
     font-size: 1.1rem;
+    line-height: 1.3;
 }
 
 .noticia-contenido {
-    color: #374151;
+    color: var(--gray-700);
     line-height: 1.6;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
 }
 
 .noticia-meta {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--gray-600);
+    border-top: 1px solid var(--gray-200);
+    padding-top: 0.75rem;
 }
 
-/* Botones principales */
-.btn-primary,
-.btn-secondary {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    text-align: center;
-    border: none;
-    cursor: pointer;
+.noticia-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
-.btn-primary {
-    background: #2563eb;
-    color: white;
+/* Debug temporal */
+.debug-info {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border: 2px solid #f59e0b;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
 }
 
-.btn-primary:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-}
-
-.btn-secondary {
-    background: #f3f4f6;
-    color: #374151;
-    border: 1px solid #d1d5db;
-}
-
-.btn-secondary:hover {
-    background: #e5e7eb;
-    transform: translateY(-1px);
-}
-
-/* Mensajes */
-.mensaje {
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    font-weight: 500;
-}
-
-.mensaje.success {
-    background: #dcfce7;
-    color: #166534;
-    border: 1px solid #bbf7d0;
-}
-
-.mensaje.error {
-    background: #fef2f2;
-    color: #dc2626;
-    border: 1px solid #fecaca;
-}
-
-.mensaje.warning {
-    background: #fef3c7;
+.debug-info h3 {
     color: #92400e;
-    border: 1px solid #fde68a;
-}
-
-/* Secciones con estilo específico */
-.seccion-acciones {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.seccion-acciones h2 {
-    color: #1f2937;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+    margin-bottom: 1rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.grid-acciones {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+.debug-info p {
+    margin-bottom: 0.5rem;
+    color: #92400e;
 }
 
-.div-sin-horarios {
-    background: #f3f4f6;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    color: #6b7280;
+.debug-info ul {
+    margin-left: 1.5rem;
+    color: #92400e;
+}
+
+.debug-info li {
+    margin-bottom: 0.25rem;
 }
 
 /* Animaciones */
@@ -489,26 +512,6 @@
 .profesor-container > *:nth-child(3) { animation-delay: 0.2s; }
 .profesor-container > *:nth-child(4) { animation-delay: 0.3s; }
 
-.stat-card {
-    animation: slideInUp 0.4s ease-out;
-}
-
-.stat-card:nth-child(1) { animation-delay: 0.1s; }
-.stat-card:nth-child(2) { animation-delay: 0.2s; }
-.stat-card:nth-child(3) { animation-delay: 0.3s; }
-.stat-card:nth-child(4) { animation-delay: 0.4s; }
-
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .materia-card {
     animation: fadeInScale 0.5s ease-out;
 }
@@ -517,6 +520,8 @@
 .materia-card:nth-child(2) { animation-delay: 0.3s; }
 .materia-card:nth-child(3) { animation-delay: 0.4s; }
 .materia-card:nth-child(4) { animation-delay: 0.5s; }
+.materia-card:nth-child(5) { animation-delay: 0.6s; }
+.materia-card:nth-child(6) { animation-delay: 0.7s; }
 
 @keyframes fadeInScale {
     from {
@@ -529,23 +534,60 @@
     }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .content {
-        padding: 1rem;
+.stat-card {
+    animation: slideInUp 0.4s ease-out;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-    
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
     .materias-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .profesor-container {
+        gap: 1.5rem;
+    }
+    
+    .estadisticas-profesor, .noticias-profesor {
+        padding: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .materias-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     .materia-stats {
         flex-direction: column;
         gap: 0.5rem;
+        align-items: flex-start;
     }
     
     .acciones-materia {
@@ -554,21 +596,24 @@
     
     .btn-small {
         text-align: center;
+        justify-content: center;
+    }
+    
+    .horario-item {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    
+    .horario-tiempo {
+        text-align: left;
+        margin: 0;
     }
     
     .noticia-meta {
         flex-direction: column;
-        gap: 0.25rem;
-    }
-    
-    .profesor-container {
-        gap: 1.5rem;
-    }
-    
-    .estadisticas-profesor,
-    .noticias-profesor,
-    .seccion-acciones {
-        padding: 1.5rem;
+        gap: 0.5rem;
+        align-items: flex-start;
     }
 }
 
@@ -578,57 +623,172 @@
     }
     
     .stat-card {
-        padding: 1rem;
+        padding: 1.25rem;
     }
     
     .stat-icon {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     
     .stat-number {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
     
     .materia-card {
-        padding: 1rem;
+        padding: 1.25rem;
     }
     
-    .estadisticas-profesor,
-    .noticias-profesor,
-    .seccion-acciones {
+    .debug-info {
         padding: 1rem;
     }
     
     .horarios-materia {
         padding: 0.75rem;
     }
+    
+    .acciones-materia {
+        gap: 0.75rem;
+    }
 }
 
 /* Mejoras de accesibilidad */
-.btn-primary:focus,
-.btn-secondary:focus,
-.btn-primary-small:focus,
-.btn-secondary-small:focus {
+.btn-small:focus,
+.stat-card:focus {
     outline: 2px solid #2563eb;
     outline-offset: 2px;
 }
 
+/* Estados de carga */
+.profesor-container.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.materia-card.loading {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Acciones Rápidas */
+.acciones-rapidas {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--gray-200);
+}
+
+.acciones-rapidas h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--gray-200);
+    padding-bottom: 0.5rem;
+}
+
+.acciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.accion-card {
+    background: linear-gradient(135deg, var(--white), #f8fafc);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--gray-800);
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.accion-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.accion-card:hover::before {
+    transform: scaleY(1);
+}
+
+.accion-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    color: #2563eb;
+    border-color: #2563eb;
+}
+
+.accion-icon {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    padding: 0.75rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    min-height: 60px;
+}
+
+.accion-card:hover .accion-icon {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: var(--white);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.accion-texto h4 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.accion-texto p {
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.accion-card:hover .accion-texto p {
+    color: var(--gray-700);
+}
+
 /* Print styles */
 @media print {
-    .btn-primary,
-    .btn-secondary,
-    .btn-primary-small,
-    .btn-secondary-small,
-    .acciones-materia {
+    .btn-small,
+    .acciones-materia,
+    .acciones-rapidas {
         display: none !important;
     }
     
     .materia-card,
     .estadisticas-profesor,
-    .noticias-profesor,
-    .seccion-acciones {
+    .noticias-profesor {
         box-shadow: none;
         border: 1px solid #ccc;
+        break-inside: avoid;
     }
     
     .page-header {

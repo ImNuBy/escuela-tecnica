@@ -1,0 +1,1000 @@
+/* ========================================
+   CSS ESPECIALIZADO PARA SISTEMA DE ASISTENCIAS
+   ======================================== */
+
+/* Variables específicas para asistencias */
+:root {
+    --asistencia-presente: #22c55e;
+    --asistencia-presente-bg: #dcfce7;
+    --asistencia-presente-border: #16a34a;
+    
+    --asistencia-ausente: #ef4444;
+    --asistencia-ausente-bg: #fef2f2;
+    --asistencia-ausente-border: #dc2626;
+    
+    --asistencia-justificado: #f59e0b;
+    --asistencia-justificado-bg: #fef3c7;
+    --asistencia-justificado-border: #d97706;
+    
+    --asistencia-neutral: #6b7280;
+    --asistencia-neutral-bg: #f9fafb;
+    --asistencia-neutral-border: #d1d5db;
+    
+    --panel-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --warning-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --danger-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --card-shadow-active: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* ========================================
+   CONTENEDOR PRINCIPAL
+   ======================================== */
+.asistencias-container {
+    display: grid;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ========================================
+   PANEL DE ESTADÍSTICAS
+   ======================================== */
+.estadisticas-panel {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.estadisticas-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--panel-gradient);
+}
+
+.estadisticas-panel h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.stat-card {
+    background: var(--gray-50);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    padding: 0.75rem;
+    background: var(--white);
+    border-radius: 50%;
+    box-shadow: var(--card-shadow);
+}
+
+.stat-info h3 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--gray-800);
+    margin: 0;
+}
+
+.stat-info p {
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ========================================
+   PANEL SELECTOR
+   ======================================== */
+.selector-panel {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    border-left: 5px solid var(--primary-color);
+}
+
+.selector-panel h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.selector-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 1.5rem;
+    align-items: end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--gray-700);
+    font-size: 0.95rem;
+}
+
+.form-group select,
+.form-group input {
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--white);
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    transform: translateY(-1px);
+}
+
+.acciones-rapidas {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* ========================================
+   FORMULARIO DE ASISTENCIAS
+   ======================================== */
+.asistencias-form {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-header {
+    background: var(--panel-gradient);
+    color: var(--white);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.form-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.fecha-info {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    gap: 0.25rem;
+}
+
+.fecha-display {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.materia-display {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.alumnos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+}
+
+/* ========================================
+   TARJETAS DE ALUMNOS
+   ======================================== */
+.alumno-card {
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.alumno-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gray-300);
+    transition: all 0.3s ease;
+}
+
+.alumno-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+/* Estados de asistencia */
+.alumno-card.presente {
+    border-color: var(--asistencia-presente-border);
+    background: var(--asistencia-presente-bg);
+}
+
+.alumno-card.presente::before {
+    background: var(--asistencia-presente);
+}
+
+.alumno-card.ausente {
+    border-color: var(--asistencia-ausente-border);
+    background: var(--asistencia-ausente-bg);
+}
+
+.alumno-card.ausente::before {
+    background: var(--asistencia-ausente);
+}
+
+.alumno-card.justificado {
+    border-color: var(--asistencia-justificado-border);
+    background: var(--asistencia-justificado-bg);
+}
+
+.alumno-card.justificado::before {
+    background: var(--asistencia-justificado);
+}
+
+.alumno-info {
+    margin-bottom: 1rem;
+}
+
+.alumno-nombre {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 0.25rem;
+}
+
+.alumno-usuario {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    font-style: italic;
+}
+
+.asistencia-controles {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.checkbox-label:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--gray-300);
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+    background: var(--white);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.presente-label .checkmark {
+    border-color: var(--asistencia-presente-border);
+}
+
+.presente-label input[type="checkbox"]:checked + .checkmark {
+    background: var(--asistencia-presente);
+    border-color: var(--asistencia-presente-border);
+}
+
+.justificado-label .checkmark {
+    border-color: var(--asistencia-justificado-border);
+}
+
+.justificado-label input[type="checkbox"]:checked + .checkmark {
+    background: var(--asistencia-justificado);
+    border-color: var(--asistencia-justificado-border);
+}
+
+.checkbox-label input[type="checkbox"]:disabled + .checkmark {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.observaciones-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.observaciones-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ========================================
+   ACCIONES DEL FORMULARIO
+   ======================================== */
+.form-actions {
+    background: var(--gray-50);
+    padding: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--gray-200);
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    min-width: 200px;
+}
+
+/* ========================================
+   RESUMEN DE LA CLASE
+   ======================================== */
+.resumen-clase {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.resumen-clase h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.resumen-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.resumen-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--gray-50);
+    border-radius: 12px;
+    border: 2px solid var(--gray-200);
+    transition: all 0.3s ease;
+}
+
+.resumen-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow);
+}
+
+.resumen-item.presente {
+    background: var(--asistencia-presente-bg);
+    border-color: var(--asistencia-presente-border);
+}
+
+.resumen-item.ausente {
+    background: var(--asistencia-ausente-bg);
+    border-color: var(--asistencia-ausente-border);
+}
+
+.resumen-item.justificado {
+    background: var(--asistencia-justificado-bg);
+    border-color: var(--asistencia-justificado-border);
+}
+
+.resumen-numero {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--gray-800);
+    margin-bottom: 0.5rem;
+}
+
+.resumen-label {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ========================================
+   HISTORIAL PANEL
+   ======================================== */
+.historial-panel {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.historial-panel h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.historial-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.historial-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    background: var(--gray-50);
+    border-radius: 12px;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+}
+
+.historial-item:hover {
+    background: var(--white);
+    box-shadow: var(--card-shadow);
+    transform: translateX(5px);
+}
+
+.historial-fecha {
+    font-weight: 600;
+    color: var(--gray-800);
+    font-size: 0.95rem;
+    min-width: 80px;
+}
+
+.historial-materia {
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.historial-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+}
+
+.historial-stats .stat {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.historial-stats .stat.presente {
+    background: var(--asistencia-presente-bg);
+    color: var(--asistencia-presente);
+}
+
+.historial-stats .stat.ausente {
+    background: var(--asistencia-ausente-bg);
+    color: var(--asistencia-ausente);
+}
+
+/* ========================================
+   ESTADÍSTICAS POR MATERIA
+   ======================================== */
+.estadisticas-materias {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.estadisticas-materias h2 {
+    color: var(--gray-800);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.materias-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.materia-stat-card {
+    background: var(--gray-50);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--gray-200);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.materia-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.materia-nombre {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--gray-800);
+    margin-bottom: 0.5rem;
+}
+
+.materia-curso {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+}
+
+.porcentaje-asistencia {
+    font-size: 2rem;
+    font-weight: 800;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border: 2px solid;
+}
+
+.asistencia-excelente {
+    background: var(--asistencia-presente-bg);
+    color: var(--asistencia-presente);
+    border-color: var(--asistencia-presente-border);
+}
+
+.asistencia-buena {
+    background: #dbeafe;
+    color: #1e40af;
+    border-color: #3b82f6;
+}
+
+.asistencia-regular {
+    background: var(--asistencia-justificado-bg);
+    color: var(--asistencia-justificado);
+    border-color: var(--asistencia-justificado-border);
+}
+
+.asistencia-baja {
+    background: var(--asistencia-ausente-bg);
+    color: var(--asistencia-ausente);
+    border-color: var(--asistencia-ausente-border);
+}
+
+.materia-detalle {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+/* ========================================
+   ESTADOS ESPECIALES
+   ======================================== */
+.sin-contenido {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    border: 2px dashed var(--gray-300);
+    position: relative;
+}
+
+.sin-contenido h3 {
+    color: var(--gray-700);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.sin-contenido p {
+    color: var(--gray-600);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ========================================
+   MENSAJES
+   ======================================== */
+.mensaje {
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: slideDown 0.4s ease-out;
+    border: 2px solid;
+    box-shadow: var(--card-shadow);
+}
+
+.mensaje.success {
+    background: var(--asistencia-presente-bg);
+    color: var(--asistencia-presente);
+    border-color: var(--asistencia-presente-border);
+}
+
+.mensaje.success::before {
+    content: '✅';
+    font-size: 1.5rem;
+}
+
+.mensaje.error {
+    background: var(--asistencia-ausente-bg);
+    color: var(--asistencia-ausente);
+    border-color: var(--asistencia-ausente-border);
+}
+
+.mensaje.error::before {
+    content: '❌';
+    font-size: 1.5rem;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 1024px) {
+    .asistencias-container {
+        padding: 0.5rem;
+        gap: 1.5rem;
+    }
+    
+    .selector-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .acciones-rapidas {
+        justify-content: center;
+    }
+    
+    .alumnos-grid {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .form-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .fecha-info {
+        text-align: center;
+    }
+    
+    .checkbox-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .resumen-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .materias-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .estadisticas-panel,
+    .selector-panel,
+    .asistencias-form,
+    .resumen-clase,
+    .historial-panel,
+    .estadisticas-materias {
+        padding: 1.25rem;
+    }
+    
+    .alumnos-grid {
+        padding: 1rem;
+    }
+    
+    .alumno-card {
+        padding: 1rem;
+    }
+    
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .historial-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .historial-stats {
+        justify-content: center;
+    }
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animaciones escalonadas */
+.asistencias-container > *:nth-child(1) { animation-delay: 0s; }
+.asistencias-container > *:nth-child(2) { animation-delay: 0.1s; }
+.asistencias-container > *:nth-child(3) { animation-delay: 0.2s; }
+.asistencias-container > *:nth-child(4) { animation-delay: 0.3s; }
+.asistencias-container > *:nth-child(5) { animation-delay: 0.4s; }
+
+.alumno-card {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+.alumno-card:nth-child(1) { animation-delay: 0.1s; }
+.alumno-card:nth-child(2) { animation-delay: 0.2s; }
+.alumno-card:nth-child(3) { animation-delay: 0.3s; }
+.alumno-card:nth-child(4) { animation-delay: 0.4s; }
+.alumno-card:nth-child(5) { animation-delay: 0.5s; }
+.alumno-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* ========================================
+   EFECTOS ESPECIALES
+   ======================================== */
+.alumno-card.loading {
+    background: linear-gradient(
+        90deg,
+        var(--gray-200) 25%,
+        var(--gray-100) 50%,
+        var(--gray-200) 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.checkbox-label {
+    position: relative;
+}
+
+.checkbox-label:active {
+    transform: scale(0.95);
+}
+
+.porcentaje-asistencia {
+    position: relative;
+    overflow: hidden;
+}
+
+.porcentaje-asistencia::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.porcentaje-asistencia:hover::before {
+    left: 100%;
+}
+
+/* ========================================
+   UTILIDADES
+   ======================================== */
+.texto-centrado {
+    text-align: center;
+}
+
+.mb-grande {
+    margin-bottom: 2rem;
+}
+
+.p-grande {
+    padding: 2rem;
+}
+
+.sombra-suave {
+    box-shadow: var(--card-shadow);
+}
+
+.borde-redondeado {
+    border-radius: 12px;
+}
+
+.transicion-suave {
+    transition: all 0.3s ease;
+}
+
+/* Print styles */
+@media print {
+    .asistencias-container {
+        gap: 1rem;
+    }
+    
+    .selector-panel,
+    .form-actions,
+    .btn,
+    .acciones-rapidas {
+        display: none !important;
+    }
+    
+    .asistencias-form,
+    .alumno-card,
+    .resumen-clase {
+        box-shadow: none;
+        border: 1px solid var(--gray-300);
+    }
+    
+    .form-header {
+        background: var(--gray-100) !important;
+        color: var(--gray-800) !important;
+    }
+    
+    .alumno-card {
+        break-inside: avoid;
+        margin-bottom: 0.5rem;
+    }
+}

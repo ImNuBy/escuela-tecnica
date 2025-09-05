@@ -78,7 +78,7 @@ $dias_semana = [
     <title>Mis Materias - Sistema Escolar</title>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/alumno.css">
-</head>
+    <style>
         .alumno-info {
             background: var(--white);
             padding: 2rem;
@@ -261,6 +261,55 @@ $dias_semana = [
         
         .tab-content.active {
             display: block;
+        }
+        
+        /* Fallback para variables CSS si no están definidas */
+        :root {
+            --white: #ffffff;
+            --primary-color: #2563eb;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-800: #1f2937;
+            --border-radius: 8px;
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+        
+        .btn-secondary {
+            background: var(--gray-100);
+            color: var(--gray-800);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--gray-200);
         }
         
         @media (max-width: 768px) {
